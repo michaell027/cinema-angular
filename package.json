@@ -20,6 +20,7 @@
     "@angular/router": "^17.0.4",
     "@mdi/font": "^7.3.67",
     "@ng-icons/core": "^26.1.0",
+    "@ng-icons/heroicons": "^26.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
