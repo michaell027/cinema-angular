@@ -7,7 +7,7 @@
 <!-- Navigation Bar -->
 <div class="flex justify-center w-full p-3">
   <div
-    class="px-5 pt-3 w-full flex justify-between bg-white shadow-lg rounded-2xl"
+    class="px-5 w-full flex justify-between bg-white shadow-lg rounded-2xl dark:bg-gray-800 z-10"
   >
     <a href="https://flowbite.com" class="flex items-center">
       <img
@@ -26,7 +26,7 @@
         <a
           routerLink="/home"
           routerLinkActive="active"
-          class="p-3 text-gray-400 hover:text-yellow-500 [&.active_.active-indicator]:bg-yellow-500 [&.active_.active-indicator]:w-5 [&.active_.active-indicator]:h-1 [&.active_.active-text]:text-yellow-500 [&.active_.active-icon]:text-black"
+          class="p-3 text-gray-400 hover:text-yellow-500"
         >
           <span class="flex flex-col items-center">
             <!-- Icon -->
@@ -85,7 +85,6 @@
 
             <!-- Focus Dot -->
             <span
-              routerLinkActive="h-1 w-5 bg-yellow-500"
               class="h-2 w-2 rounded-full group-hover:bg-yellow-500 hover:h-3 hover:w-3 transition-all duration-150 delay-100"
             ></span>
           </span>
@@ -135,6 +134,31 @@
       </div>
     </div>
     <div class="flex items-center w-fit">
+      <button (click)="toggleTheme()" class="flex items-center relative mr-5">
+        @if (theme === 'dark') {
+        <ng-icon
+          name="heroSun"
+          class="absolute rotate-animate text-gray-400"
+          size="25"
+        ></ng-icon>
+        <ng-icon
+          name="heroMoon"
+          class="absolute rotate-animate-off text-gray-400"
+          size="25"
+        ></ng-icon>
+        } @else {
+        <ng-icon
+          name="heroMoon"
+          class="absolute rotate-animate text-gray-400"
+          size="25"
+        ></ng-icon>
+        <ng-icon
+          name="heroSun"
+          class="absolute rotate-animate-off text-gray-400"
+          size="25"
+        ></ng-icon>
+        }
+      </button>
       <a
         href="#"
         class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
