@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroMoon, heroSun } from '@ng-icons/heroicons/outline';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -8,7 +8,7 @@ import { ThemeService } from '../../services/theme-service/theme.service';
 @Component({
   selector: 'app-bottom-navigation',
   standalone: true,
-  imports: [CommonModule, NgIcon, RouterLink, RouterLinkActive],
+  imports: [CommonModule, NgIcon, RouterLink, RouterLinkActive, NgOptimizedImage],
   viewProviders: [provideIcons({ heroSun, heroMoon })],
   templateUrl: './bottom-navigation.component.html',
   styleUrls: ['./bottom-navigation.component.css'],
