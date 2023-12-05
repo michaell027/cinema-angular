@@ -1,13 +1,13 @@
 .active .active-text {
-  @apply text-yellow-500;
+  @apply text-red-500;
 }
 
 .active .active-indicator {
-  @apply bg-yellow-500 w-5 h-1;
+  @apply bg-red-500 w-5 h-1;
 }
 
 .active .active-icon {
-  @apply text-amber-400;
+  @apply text-red-500;
 }
 
 @keyframes rotate-animation {

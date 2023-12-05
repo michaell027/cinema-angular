@@ -7,7 +7,7 @@
 <!-- Navigation Bar -->
 <div class="flex justify-center w-full p-3">
   <div
-    class="px-5 w-full flex justify-between bg-white shadow-lg rounded-2xl dark:bg-gray-800 z-10"
+    class="px-5 w-full flex justify-between bg-white shadow-lg rounded-2xl dark:bg-zinc-800 z-10 transition-colors"
   >
     <a href="https://www.youtube.com/watch?v=pihE-4HWZx0" class="flex items-center">
       <img
@@ -19,7 +19,7 @@
       />
       <span
         class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-        >CinemaBrah</span
+      >CinemaBrah</span
       >
     </a>
     <div class="flex flex-row space-x-3">
@@ -28,12 +28,12 @@
         <a
           routerLink="/home"
           routerLinkActive="active"
-          class="p-3 text-gray-400 hover:text-yellow-500"
+          class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
         >
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
-              class="active-icon mdi mdi-home-outline mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200 active:text-amber-500"
+              class="active-icon mdi mdi-home-outline mdi-24px mx-1 text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-500  duration-200 active:text-amber-500"
             ></i>
 
             <!-- Text -->
@@ -43,7 +43,7 @@
 
             <!-- Focus Dot -->
             <span
-              class="active-indicator h-2 w-2 rounded-full group-hover:bg-yellow-500 transition-all duration-150 delay-100"
+              class="active-indicator h-2 w-2 rounded-full group-hover:bg-red-500 dark:group-hover:bg-red-500 transition-all  duration-150 delay-100"
             ></span>
           </span>
         </a>
@@ -52,11 +52,11 @@
       <!-- Item #2 -->
       <div class="flex group">
         <a routerLink="/movies"
-        routerLinkActive="active" class="p-3 text-gray-400 hover:text-yellow-500">
+           routerLinkActive="active" class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500">
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
-              class=" active-icon mdi mdi-filmstrip mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200"
+              class=" active-icon mdi mdi-filmstrip mdi-24px mx-1 text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-500  transition-colors duration-200"
             ></i>
 
             <!-- Text -->
@@ -66,7 +66,7 @@
 
             <!-- Focus Dot -->
             <span
-              class=" active-indicator h-2 w-2 rounded-full group-hover:bg-yellow-500 transition-all duration-150 delay-100"
+              class=" active-indicator h-2 w-2 rounded-full group-hover:bg-red-500 dark:group-hover:bg-red-500 transition-all transition-color duration-150 delay-100"
             ></span>
           </span>
         </a>
@@ -74,11 +74,11 @@
 
       <!-- Item #3 -->
       <div class="flex group">
-        <a routerLink="/feeds" class="p-3 hover:text-yellow-500">
-          <span class="flex text-gray-400 hover:text-yellow-500 flex-col items-center">
+        <a routerLink="/feeds" class="p-3 hover:text-red-500 dark:hover:text-red-500">
+          <span class="flex text-gray-400 hover:text-red-500 dark:hover:text-red-500 flex-col items-center">
             <!-- Icon -->
             <i
-              class="mdi mdi-table-plus mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200"
+              class="mdi mdi-table-plus mdi-24px mx-1 text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-500 transition-color duration-200"
             ></i>
 
             <!-- Text -->
@@ -88,7 +88,7 @@
 
             <!-- Focus Dot -->
             <span
-              class="h-2 w-2 rounded-full group-hover:bg-yellow-500 hover:h-3 hover:w-3 transition-all duration-150 delay-100"
+              class="h-2 w-2 rounded-full group-hover:bg-red-500 dark:group-hover:bg-red-500 hover:h-3 hover:w-3 transition-all transition-color duration-150 delay-100"
             ></span>
           </span>
         </a>
@@ -102,31 +102,31 @@
         @if (theme === 'dark') {
         <ng-icon
           name="heroSun"
-          class="absolute rotate-animate text-gray-400 hover:text-amber-400"
+          class="absolute rotate-animate text-gray-400 hover:text-red-500"
           size="25"
         ></ng-icon>
         <ng-icon
           name="heroMoon"
-          class="absolute rotate-animate-off text-gray-400 hover:text-amber-400"
+          class="absolute rotate-animate-off text-gray-400 hover:text-red-500"
           size="25"
         ></ng-icon>
         } @else {
         <ng-icon
           name="heroMoon"
-          class="absolute rotate-animate text-gray-400 hover:text-amber-400"
+          class="absolute rotate-animate text-gray-400 hover:text-red-500"
           size="25"
         ></ng-icon>
         <ng-icon
           name="heroSun"
-          class="absolute rotate-animate-off text-gray-400 hover:text-amber-400"
+          class="absolute rotate-animate-off text-gray-400 hover:text-red-500"
           size="25"
         ></ng-icon>
         }
       </button>
       <a
         href="login"
-        class="text-gray-800 dark:text-white hover:text-amber-400 dark:hover:text-yellow-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none transition-colors duration-200"
-        >Log in</a
+        class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none transition-colors duration-200"
+      >Log in</a
       >
     </div>
   </div>
