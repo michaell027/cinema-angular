@@ -1,27 +1,36 @@
 <div class="flex flex-col items-center justify-center h-full">
   <div class="flex w-full justify-center">
-    <ul class="flex items-center bg-gray-300 rounded-t-2xl justify-center flex-wrap text-sm font-medium text-center text-gray-500 border-gray-400 dark:border-gray-700 dark:text-gray-400">
-      <li class="">
-        <div class="z-10 relative left-0 top-0 rounded-br-2xl bg-white w-2 h-full"></div>
-        <a routerLink="../monday" routerLinkActive="active" class="[&.active]:bg-amber-400 z-0 relative inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Monday</a>
-        <div class="z-10  right-0 top-0 rounded-bl-2xl bg-gray-300 w-2 h-full"></div>
+    <ul class="flex border-[0.75rem] border-b-0 border-white relative select-none items-center bg-gray-300 rounded-t-2xl flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+      <div class="slider-transition absolute flex w-fit h-full" [ngClass]="sliderBgClasses">
+        <div class="absolute bottom-0 w-full h-1/2 bg-white"></div>
+        <div class="static z-10 curved-side-left" ></div>
+        <div class="curved-block"></div>
+        <div class="static z-10 curved-side-right"></div>
+      </div>
+      <li class="w-28 static z-20">
+        <a routerLink="../monday" routerLinkActive="active" class="inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300">Monday</a>
       </li>
-      <li class="">
-        <a routerLink="../tuesday" routerLinkActive="active" class="[&.active]:bg-amber-400 inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Tuesday</a>
+      <li class="w-28 static z-20">
+        <a routerLink="../tuesday" routerLinkActive="active" class="inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300">Tuesday</a>
       </li>
-      <li class="">
-        <a routerLink="../wednesday" routerLinkActive="active" class="[&.active]:bg-amber-400 inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Wednesday</a>
+      <li class="w-28 static z-20">
+        <a routerLink="../wednesday" routerLinkActive="active" class="inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Wednesday</a>
       </li>
-      <li class="">
-        <a routerLink="../thursday" routerLinkActive="active" class="[&.active]:bg-amber-400 inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Thursday</a>
+      <li class="w-28 static z-20">
+        <a routerLink="../thursday" routerLinkActive="active" class="inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Thursday</a>
       </li>
-      <li class="">
-        <a routerLink="../friday" routerLinkActive="active" class="[&.active]:bg-amber-400 inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Friday</a>
+      <li class="w-28 static z-20">
+        <a routerLink="../friday" routerLinkActive="active" class="inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Friday</a>
       </li>
     </ul>
   </div>
-  <div class="rounded-2xl bg-amber-400 w-[80%]">
-    Mojko
+  <div class="rounded-3xl bg-white w-[80%] p-3">
+    <div class="box-shadow rounded-2xl p-3">
+      <p>d</p>
+      <p>d</p>
+      <p>d</p>
+      <p>d</p>
+    </div>
   </div>
 </div>
 

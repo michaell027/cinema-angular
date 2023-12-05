@@ -1,0 +1,51 @@
+.curved-block {
+  @apply bg-white;
+  width: 112px;
+  /*border-radius: 400px 358px 50px 0px / 150px 135px 25px 0px;*/
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+}
+
+.curved-side-left {
+  @apply bg-gray-300;
+  width: 50px;
+  height: 100%;
+  border-radius: 0% 100% 100% 0% / 50% 40% 60% 50%;
+}
+
+.curved-side-right {
+  @apply bg-gray-300;
+  width: 50px;
+  height: 100%;
+  border-radius: 100% 0% 0% 100% / 40% 50% 50% 60%;
+}
+
+.slider-transition {
+  transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+}
+
+.box-shadow {
+  box-shadow: inset -15px -15px 15px -10px rgba(0,0,0,0.1),inset 14px 15px 15px -10px rgba(0,0,0,0.1);}
+
+.ml-monday {
+  margin-left: /*calc(112px * 0 - 50px)*/ -50px;
+}
+
+.ml-tuesday {
+  margin-left: /*calc(112px - 50px)*/ 62px;
+}
+
+.ml-wednesday {
+  margin-left: /*calc(112px * 2 - 50px)*/ 174px;
+}
+
+.ml-thursday {
+  margin-left: /*calc(112px * 3 - 50px)*/ 286px;
+}
+
+.ml-friday {
+  margin-left: /*calc(112px * 4 - 50px)*/ 398px;
+}
+
+.ml-saturday {
+  margin-left: /*calc(112px * 5 - 50px)*/ 510px;
+}
