@@ -2,12 +2,12 @@
   @apply text-yellow-500;
 }
 
-.active-indicator {
+.active .active-indicator {
   @apply bg-yellow-500 w-5 h-1;
 }
 
-.active-icon {
-  @apply text-black;
+.active .active-icon {
+  @apply text-amber-400;
 }
 
 @keyframes rotate-animation {

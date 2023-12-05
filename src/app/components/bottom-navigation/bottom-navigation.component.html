@@ -11,7 +11,7 @@
   >
     <a href="https://www.youtube.com/watch?v=pihE-4HWZx0" class="flex items-center">
       <img
-        ngSrc="{{ 'assets/greg2.png' }}"
+        ngSrc="{{ 'assets/cinema.png' }}"
         class="mr-3 h-6 sm:h-9"
         width="36"
         height="36"
@@ -33,7 +33,7 @@
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
-              class="active-icon mdi mdi-home-outline mdi-24px mx-1 text-gray-500 group-hover:text-gray-700 transition-color duration-200"
+              class="active-icon mdi mdi-home-outline mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200 active:text-amber-500"
             ></i>
 
             <!-- Text -->
@@ -51,21 +51,22 @@
 
       <!-- Item #2 -->
       <div class="flex group">
-        <a href="#" class="p-3 text-gray-400 hover:text-yellow-500">
+        <a routerLink="/movies"
+        routerLinkActive="active" class="p-3 text-gray-400 hover:text-yellow-500">
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
-              class="mdi mdi-filmstrip mdi-24px mx-1 text-gray-500 group-hover:text-gray-700 transition-color duration-200"
+              class=" active-icon mdi mdi-filmstrip mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200"
             ></i>
 
             <!-- Text -->
-            <span class="text-xs mb-2 transition-all duration-200">
+            <span class="active-text text-xs mb-2 transition-all duration-200">
               Movies
             </span>
 
             <!-- Focus Dot -->
             <span
-              class="h-2 w-2 rounded-full group-hover:bg-yellow-500 transition-all duration-150 delay-100"
+              class=" active-indicator h-2 w-2 rounded-full group-hover:bg-yellow-500 transition-all duration-150 delay-100"
             ></span>
           </span>
         </a>
@@ -74,10 +75,10 @@
       <!-- Item #3 -->
       <div class="flex group">
         <a routerLink="/feeds" class="p-3 hover:text-yellow-500">
-          <span class="flex text-gray-400 flex-col items-center">
+          <span class="flex text-gray-400 hover:text-yellow-500 flex-col items-center">
             <!-- Icon -->
             <i
-              class="mdi mdi-table-plus mdi-24px mx-1 text-gray-500 group-hover:text-gray-700 transition-color duration-200"
+              class="mdi mdi-table-plus mdi-24px mx-1 text-gray-500 group-hover:text-amber-400 transition-color duration-200"
             ></i>
 
             <!-- Text -->
@@ -96,35 +97,35 @@
     </div>
 
 
-    <div class="flex items-center w-fit">
-      <button (click)="toggleTheme()" class="flex items-center relative mr-5">
+    <div class="flex items-center w-fit ">
+      <button (click)="toggleTheme()" class="flex items-center relative mr-10">
         @if (theme === 'dark') {
         <ng-icon
           name="heroSun"
-          class="absolute rotate-animate text-gray-400"
+          class="absolute rotate-animate text-gray-400 hover:text-amber-400"
           size="25"
         ></ng-icon>
         <ng-icon
           name="heroMoon"
-          class="absolute rotate-animate-off text-gray-400"
+          class="absolute rotate-animate-off text-gray-400 hover:text-amber-400"
           size="25"
         ></ng-icon>
         } @else {
         <ng-icon
           name="heroMoon"
-          class="absolute rotate-animate text-gray-400"
+          class="absolute rotate-animate text-gray-400 hover:text-amber-400"
           size="25"
         ></ng-icon>
         <ng-icon
           name="heroSun"
-          class="absolute rotate-animate-off text-gray-400"
+          class="absolute rotate-animate-off text-gray-400 hover:text-amber-400"
           size="25"
         ></ng-icon>
         }
       </button>
       <a
-        href="#"
-        class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+        href="login"
+        class="text-gray-800 dark:text-white hover:text-amber-400 dark:hover:text-yellow-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none transition-colors duration-200"
         >Log in</a
       >
     </div>
