@@ -1,35 +1,73 @@
 <div class="flex flex-col items-center justify-center h-full dark:text-white">
   <div class="flex w-full justify-center">
-    <ul class="flex relative select-none items-center rounded-t-2xl flex-wrap text-sm font-medium text-center text-gray-500">
-      <div class="slider-transition absolute flex w-fit h-full" [ngClass]="sliderBgClasses">
-        <div class="absolute bottom-0 w-full h-1/2 bg-red-500 dark:bg-red-800"></div>
-        <div class="static z-10 curved-side-left transition-colors bg-gray-100 dark:bg-zinc-900" ></div>
+    <ul
+      class="flex relative select-none items-center rounded-t-2xl flex-wrap text-sm font-medium text-center text-gray-500"
+    >
+      <div
+        class="slider-transition absolute flex w-fit h-full"
+        [ngClass]="sliderBgClasses"
+      >
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-red-500 dark:bg-red-800"
+        ></div>
+        <div
+          class="static z-10 curved-side-left transition-colors bg-gray-100 dark:bg-zinc-900"
+        ></div>
         <div class="curved-block bg-red-500 dark:bg-red-800"></div>
-        <div class="static z-10 curved-side-right transition-colors bg-gray-100 dark:bg-zinc-900"></div>
+        <div
+          class="static z-10 curved-side-right transition-colors bg-gray-100 dark:bg-zinc-900"
+        ></div>
       </div>
       <li class="w-28 static z-20">
-        <a routerLink="../monday" routerLinkActive="active" class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300">Monday</a>
+        <a
+          routerLink="../monday"
+          routerLinkActive="active"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300"
+          >Monday</a
+        >
       </li>
       <li class="w-28 static z-20">
-        <a routerLink="../tuesday" routerLinkActive="active" class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300">Tuesday</a>
+        <a
+          routerLink="../tuesday"
+          routerLinkActive="active"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300"
+          >Tuesday</a
+        >
       </li>
       <li class="w-28 static z-20">
-        <a routerLink="../wednesday" routerLinkActive="active" class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Wednesday</a>
+        <a
+          routerLink="../wednesday"
+          routerLinkActive="active"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
+          >Wednesday</a
+        >
       </li>
       <li class="w-28 static z-20">
-        <a routerLink="../thursday" routerLinkActive="active" class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Thursday</a>
+        <a
+          routerLink="../thursday"
+          routerLinkActive="active"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
+          >Thursday</a
+        >
       </li>
       <li class="w-28 static z-20">
-        <a routerLink="../friday" routerLinkActive="active" class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300">Friday</a>
+        <a
+          routerLink="../friday"
+          routerLinkActive="active"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
+          >Friday</a
+        >
       </li>
     </ul>
   </div>
   <div class="rounded-3xl bg-red-500 dark:bg-red-800 w-[80%] p-3">
     <div class="box-shadow rounded-2xl p-3">
-      <p>d</p>
-      <p>d</p>
-      <p>d</p>
-      <p>d</p>
+      <div *ngFor="let movie of movies">
+        <p>{{ movie.movie.title }}</p>
+        <p *ngFor="let session of movie.sessions">
+          {{ extractTime(session.startTime) }}
+        </p>
+      </div>
     </div>
   </div>
 </div>
