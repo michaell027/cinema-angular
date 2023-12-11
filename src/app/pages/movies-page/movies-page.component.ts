@@ -39,14 +39,16 @@ export class MoviesPageComponent implements OnInit {
     this.date = today.toISOString().split('T')[0];
 
     this.day = this.getDay();
-    this.movies = this.getTodayMovies();
+    this.router.navigate(['/movies', this.day]).then();
+    this.movies = this.getMoviesByDay(this.date);
   }
 
   ngOnInit() {
     this.activated.params.subscribe((params) => {
+      this.movies = [];
       if (params['day']) {
         this.day = params['day'];
-        this.setDateForDay(this.day);
+        this.movies = this.getMoviesByDay(this.date);
       } else {
         this.router.navigate(['/movies', this.day]).then();
       }
@@ -75,7 +77,13 @@ export class MoviesPageComponent implements OnInit {
   getTodayMovies(): MovieWithSessionsModel[] {
     this.movieService.getTodayMovies().subscribe((movies) => {
       this.movies = movies;
-      console.log(this.movies);
+    });
+    return this.movies;
+  }
+
+  getMoviesByDay(date: string): MovieWithSessionsModel[] {
+    this.movieService.getMoviesByDay(date).subscribe((movies) => {
+      this.movies = movies;
     });
     return this.movies;
   }
@@ -97,27 +105,12 @@ export class MoviesPageComponent implements OnInit {
     this.router.navigate(['/movies', this.day]).then();
   }
 
-  setDateForDay(day: string) {
-    const currentDate = new Date();
-    const currentDay = currentDate.getDay();
-    const daysOfWeek = [
-      'sunday',
-      'monday',
-      'tuesday',
-      'wednesday',
-      'thursday',
-      'friday',
-      'saturday',
-    ];
-    const dayIndex = daysOfWeek.indexOf(day.toLowerCase());
-
-    if (dayIndex >= 0) {
-      const dayDifference = dayIndex - currentDay;
-      currentDate.setDate(currentDate.getDate() + dayDifference);
-
-      this.date = currentDate.toISOString().split('T')[0];
-    } else {
-      this.router.navigate(['/movies', this.day]).then();
-    }
+  handleDayClick(dayIndex: number) {
+    const todayIndex = new Date(this.date).getDay();
+    const delta = dayIndex - todayIndex;
+    const targetDate = new Date(this.date);
+    targetDate.setDate(targetDate.getDate() + delta);
+    this.date = targetDate.toISOString().split('T')[0];
+    this.handleChangeDate();
   }
 }

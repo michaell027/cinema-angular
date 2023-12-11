@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { MovieWithSessionsModel } from '../../models/movie-with-sessions.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
@@ -9,6 +10,18 @@ export class MovieService {
   constructor(private http: HttpClient) {}
 
   getTodayMovies(): Observable<MovieWithSessionsModel[]> {
-    return this.http.get<MovieWithSessionsModel[]>(this.url + 'today');
+    return this.http.get<MovieWithSessionsModel[]>(this.url + 'today').pipe(
+      catchError((error: any) => {
+        return throwError(error);
+      }),
+    );
+  }
+
+  getMoviesByDay(day: string): Observable<MovieWithSessionsModel[]> {
+    return this.http.get<MovieWithSessionsModel[]>(this.url + day).pipe(
+      catchError((error: any) => {
+        return throwError(error);
+      }),
+    );
   }
 }

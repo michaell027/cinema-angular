@@ -3,7 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MoviesPageComponent } from './pages/movies-page/movies-page.component';
 import { NgModule } from '@angular/core';
-import { ErrorComponent } from './components/eror-component/eror-component.component';
+import { ErrorComponent } from './components/error-component/error-component.component';
 import { AddMoviePageComponent } from './pages/add-movie-page/add-movie-page.component';
 
 export const routes: Routes = [
