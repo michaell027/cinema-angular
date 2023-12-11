@@ -5,7 +5,7 @@ import { MovieWithSessionsModel } from '../../models/movie-with-sessions.model';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
-  url: string = 'http://localhost:8080/api/movies/';
+  url: string = 'http://localhost:8080/api/movies-sessions/';
   constructor(private http: HttpClient) {}
 
   getTodayMovies(): Observable<MovieWithSessionsModel[]> {
