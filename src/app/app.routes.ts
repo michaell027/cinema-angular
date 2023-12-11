@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'movies', component: MoviesPageComponent },
-  { path: 'movies/add', component: AddMoviePageComponent },
+  { path: 'movie/add', component: AddMoviePageComponent },
   { path: 'movies/:day', component: MoviesPageComponent },
   { path: '**', component: ErrorComponent },
 ];
