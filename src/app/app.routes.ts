@@ -13,6 +13,11 @@ export const routes: Routes = [
   { path: 'movies', component: MoviesPageComponent },
   { path: 'movie/add', component: AddMoviePageComponent },
   { path: 'movies/:day', component: MoviesPageComponent },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
   { path: '**', component: ErrorComponent },
 ];
 
