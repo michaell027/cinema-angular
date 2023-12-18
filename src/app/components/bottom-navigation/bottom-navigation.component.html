@@ -22,7 +22,7 @@
       />
       <span
         class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-        >CinemaBrah</span
+        >SlimCinema</span
       >
     </a>
     <div class="flex flex-row space-x-3">
@@ -81,6 +81,7 @@
       <!-- Item #3 -->
       <div class="flex group">
         <a
+          *ngIf="isAdmin"
           routerLink="/movie/add"
           routerLinkActive="active"
           class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
@@ -88,7 +89,7 @@
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
-              class="active-icon mdi mdi-filmstrip mdi-24px mx-1 text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-500 transition-colors duration-200"
+              class="active-icon mdi mdi-movie-plus mdi-24px mx-1 text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-500 transition-colors duration-200"
             ></i>
 
             <!-- Text -->
