@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-movie-page',
@@ -20,7 +21,10 @@ export class AddMoviePageComponent {
     releaseDate: '',
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     this.movie.releaseDate = this.formatDate(this.movie.releaseDate);
@@ -30,6 +34,7 @@ export class AddMoviePageComponent {
       .subscribe(
         (response) => {
           console.log(response);
+          this.router.navigate(['/admin']);
         },
         (error) => {
           console.error(error);

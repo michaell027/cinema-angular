@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorHandlerService } from '../../services/error-handler-service/error-handler.service';
 import { filter, Subscription } from 'rxjs';
@@ -39,5 +39,11 @@ export class ErrorMessageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.errorSubscription.unsubscribe();
+  }
+
+  close() {
+    this.isShown = false;
+    this.message = '';
+    this.errorHandlerService.clearErrorMessage();
   }
 }

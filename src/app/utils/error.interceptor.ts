@@ -10,6 +10,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error) => {
       service.changeErrorMessage(error.error);
       console.log('error interceptor ' + error.error);
+      console.log('status' + error.status);
       return throwError(() => error.error);
     }),
   );

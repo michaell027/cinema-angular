@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class ErrorHandlerService {
   private errorMessageSource = new BehaviorSubject<string>('');
   currentErrorMessage = this.errorMessageSource.asObservable();
-  private errorMessageTimeout: any;
 
   constructor() {}
 
