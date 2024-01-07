@@ -21,6 +21,7 @@ import { ThemeService } from '../../services/theme-service/theme.service';
 })
 export class BottomNavigationComponent implements OnInit {
   theme = this.themeService.currentTheme;
+  isAdmin = false;
   constructor(private themeService: ThemeService) {}
 
   ngOnInit() {

@@ -5,7 +5,6 @@ import { MoviesPageComponent } from './pages/movies-page/movies-page.component';
 import { NgModule } from '@angular/core';
 import { ErrorComponent } from './components/error-component/error-component.component';
 import { AddMoviePageComponent } from './pages/add-movie-page/add-movie-page.component';
-
 export const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
