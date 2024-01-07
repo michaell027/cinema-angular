@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorHandlerService {
-  private errorMessageSource = new BehaviorSubject<string>('');
-  currentErrorMessage = this.errorMessageSource.asObservable();
+  errorOccurred = new Subject<string>();
+  private errorTimeout: any;
 
-  constructor() {}
+  handleError(error: HttpErrorResponse): void {
+    console.error(error);
+    clearTimeout(this.errorTimeout);
 
-  changeErrorMessage(message: string) {
-    this.errorMessageSource.next(message);
-  }
+    if (error.status === 0) {
+      this.errorOccurred.next('Could not connect to server');
+    } else {
+      let errorMessage = error.message || 'Unknown error occurred';
+      if (error.error && typeof error.error === 'string') {
+        errorMessage = error.error;
+      }
+      this.errorOccurred.next(errorMessage);
+    }
 
-  clearErrorMessage() {
-    this.errorMessageSource.next('');
+    this.errorTimeout = setTimeout(() => {
+      this.errorOccurred.next('');
+    }, 5000);
   }
 }

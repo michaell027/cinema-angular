@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorHandlerService } from '../../services/error-handler-service/error-handler.service';
 import { filter, Subscription } from 'rxjs';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-error-message',
@@ -12,38 +11,26 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
   styleUrl: './error-message.component.css',
 })
 export class ErrorMessageComponent implements OnInit, OnDestroy {
-  isShown: boolean = false;
   message: string = '';
-  private errorSubscription: Subscription = new Subscription();
+  isShown: boolean = false;
+  private errorSub: Subscription | undefined;
 
-  constructor(
-    private errorHandlerService: ErrorHandlerService,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private errorService: ErrorHandlerService) {}
 
   ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.isShown = false;
-        this.message = '';
-      });
-
-    this.errorSubscription =
-      this.errorHandlerService.currentErrorMessage.subscribe((message) => {
-        this.isShown = message !== '';
-        this.message = message;
-      });
+    this.errorSub = this.errorService.errorOccurred.subscribe(
+      (errorMessage) => {
+        this.message = errorMessage;
+        this.isShown = !!errorMessage;
+      },
+    );
   }
 
   ngOnDestroy() {
-    this.errorSubscription.unsubscribe();
+    this.errorSub?.unsubscribe();
   }
 
   close() {
     this.isShown = false;
-    this.message = '';
-    this.errorHandlerService.clearErrorMessage();
   }
 }
