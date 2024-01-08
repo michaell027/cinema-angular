@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'movies', component: MoviesPageComponent },
   { path: 'movie/add', component: AddMoviePageComponent },
-  { path: 'movies/:day', component: MoviesPageComponent },
+  { path: 'movies/:date', component: MoviesPageComponent },
   {
     path: 'admin',
     loadChildren: () =>

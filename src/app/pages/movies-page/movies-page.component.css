@@ -21,28 +21,35 @@
 }
 
 .box-shadow {
-  box-shadow: inset -15px -15px 15px -10px rgba(0,0,0,0.1),inset 14px 15px 15px -10px rgba(0,0,0,0.1);}
+  box-shadow:
+    inset -15px -15px 15px -10px rgba(0, 0, 0, 0.1),
+    inset 14px 15px 15px -10px rgba(0, 0, 0, 0.1);
+}
 
-.ml-monday {
+.ml-sunday {
   margin-left: /*calc(112px * 0 - 50px)*/ -50px;
 }
 
-.ml-tuesday {
+.ml-monday {
   margin-left: /*calc(112px - 50px)*/ 62px;
 }
 
-.ml-wednesday {
+.ml-tuesday {
   margin-left: /*calc(112px * 2 - 50px)*/ 174px;
 }
 
-.ml-thursday {
+.ml-wednesday {
   margin-left: /*calc(112px * 3 - 50px)*/ 286px;
 }
 
-.ml-friday {
+.ml-thursday {
   margin-left: /*calc(112px * 4 - 50px)*/ 398px;
 }
 
-.ml-saturday {
+.ml-friday {
   margin-left: /*calc(112px * 5 - 50px)*/ 510px;
+}
+
+.ml-saturday {
+  margin-left: /*calc(112px * 6 - 50px)*/ 622px;
 }

@@ -1,10 +1,11 @@
 <div class="flex flex-col items-center justify-center h-full dark:text-white">
   <input
-    class=" dark:text-gray-300 p-1 mb-10 border-2 font-mono dark:border-red-800 dark:bg-red-900 rounded-2xl dark:ring dark:ring-red-500/20"
+    class="dark:text-gray-300 p-1 mb-10 border-2 font-mono dark:border-red-800 dark:bg-red-900 rounded-2xl dark:ring dark:ring-red-500/20"
     type="date"
     [(ngModel)]="date"
     (change)="handleChangeDate()"
   />
+  <!--  <h1 class="text-[180px]">MAS TO FIXNUTE :)</h1>-->
   <div class="flex w-full justify-center">
     <ul
       class="flex relative select-none items-center rounded-t-2xl flex-wrap text-sm font-medium text-center text-gray-500"
@@ -26,47 +27,72 @@
       </div>
       <li class="w-28 static z-20">
         <a
-          routerLink="../monday"
+          [routerLink]="'../' + getDateForDayIndex(0)"
+          routerLinkActive="active"
+          (click)="handleDayClick(0)"
+          [ngClass]="selectedDayIndex(0) ? 'active' : ''"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
+          >Sunday</a
+        >
+      </li>
+      <li class="w-28 static z-20">
+        <a
+          [routerLink]="'../' + getDateForDayIndex(1)"
           routerLinkActive="active"
           (click)="handleDayClick(1)"
+          [ngClass]="selectedDayIndex(1) ? 'active' : ''"
           class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300"
           >Monday</a
         >
       </li>
       <li class="w-28 static z-20">
         <a
-          routerLink="../tuesday"
+          [routerLink]="'../' + getDateForDayIndex(2)"
           routerLinkActive="active"
           (click)="handleDayClick(2)"
-          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300"
+          [ngClass]="selectedDayIndex(2) ? 'active' : ''"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
           >Tuesday</a
         >
       </li>
       <li class="w-28 static z-20">
         <a
-          routerLink="../wednesday"
+          [routerLink]="'../' + getDateForDayIndex(3)"
           routerLinkActive="active"
           (click)="handleDayClick(3)"
+          [ngClass]="selectedDayIndex(3) ? 'active' : ''"
           class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
           >Wednesday</a
         >
       </li>
       <li class="w-28 static z-20">
         <a
-          routerLink="../thursday"
+          [routerLink]="'../' + getDateForDayIndex(4)"
           routerLinkActive="active"
           (click)="handleDayClick(4)"
+          [ngClass]="selectedDayIndex(4) ? 'active' : ''"
           class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
           >Thursday</a
         >
       </li>
       <li class="w-28 static z-20">
         <a
-          routerLink="../friday"
+          [routerLink]="'../' + getDateForDayIndex(5)"
           routerLinkActive="active"
           (click)="handleDayClick(5)"
+          [ngClass]="selectedDayIndex(5) ? 'active' : ''"
           class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 rounded-t-lg hover:text-gray-600 dark:hover:text-gray-300"
           >Friday</a
+        >
+      </li>
+      <li class="w-28 static z-20">
+        <a
+          [routerLink]="'../' + getDateForDayIndex(6)"
+          routerLinkActive="active"
+          (click)="handleDayClick(6)"
+          [ngClass]="selectedDayIndex(6) ? 'active' : ''"
+          class="[&.active]:text-gray-800 [&.active]:dark:text-gray-100 inline-block p-4 hover:text-gray-600 dark:hover:text-gray-300"
+          >Saturday</a
         >
       </li>
     </ul>
