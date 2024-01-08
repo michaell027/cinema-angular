@@ -24,6 +24,7 @@ export class BottomNavigationComponent implements OnInit {
   theme = this.themeService.currentTheme;
   isAdmin = false;
   isLogged = false;
+  username ='';
 
   constructor(private themeService: ThemeService, private authService: AuthService) {
 
@@ -39,6 +40,7 @@ export class BottomNavigationComponent implements OnInit {
     this.authService.loggedUser().subscribe(user => {
       if (user) {
         this.isLogged = true;
+        this.username = user;
       }
     });
   }
