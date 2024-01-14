@@ -79,12 +79,13 @@
       </div>
 
       <!-- Item #3 -->
+      @if (isLogged) {
       <div class="flex group">
         <a
-          *ngIf="isAdmin"
           routerLink="/movie/add"
           routerLinkActive="active"
           class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
+
         >
           <span class="flex flex-col items-center">
             <!-- Icon -->
@@ -103,7 +104,9 @@
             ></span>
           </span>
         </a>
+
       </div>
+      }
     </div>
 
     <div class="flex items-center w-fit">
@@ -133,9 +136,12 @@
         }
       </button>
       @if (isLogged) {
-  <p>
+  <button class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
+     (click) = "handleLogout()"
+  >
     {{ username }}
-  </p>
+
+  </button>
       } @else {
         <a
 
