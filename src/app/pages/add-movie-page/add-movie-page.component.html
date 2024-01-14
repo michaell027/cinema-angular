@@ -1,81 +1,102 @@
-<div class="relative h-full overflow-hidden p-3 pb-0 ">
-  <div class="rounded-2xl border-2 border-gray-100/20 shadow-2xl shadow-gray-100/20" style="
-      background-image: url('assets/curtain.jpg');
+<div class="relative h-full overflow-hidden p-3 pb-0">
+  <div
+    class="rounded-2xl border-2 border-gray-100/20 shadow-2xl shadow-gray-100/20"
+    style="
+      background-image: url(&quot;assets/curtain.jpg&quot;);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       height: 100%;
-      width: 100%;"
+      width: 100%;
+    "
   >
+    <div class="flex justify-center items-center h-full">
+      <form
+        class="dark:border-red-800 dark:bg-zinc-800 bg-gray-100/20 transition-colors border-2 flex flex-col justify-center border-gray-100/20 shadow-zinc-950 shadow-2xl rounded-2xl p-5 md:p-10 w-full md:w-2/3 lg:w-1/3"
+        (ngSubmit)="onSubmit()"
+        #movieForm="ngForm"
+      >
+        <div class="mb-3">
+          <label class="mb-2 text-lg font-mono text-gray-100" for="title"
+            >Title:</label
+          >
+          <input
+            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
+            type="text"
+            id="title"
+            required
+            [(ngModel)]="movie.title"
+            name="title"
+          />
+        </div>
 
-  <div class="flex justify-center items-center h-full">
-<form class="dark:border-red-800 dark:bg-zinc-800 bg-gray-100/20 transition-colors border-2 flex flex-col justify-center border-gray-100/20  shadow-zinc-950 shadow-2xl rounded-2xl p-5 md:p-10 w-full md:w-2/3 lg:w-1/3"
-      (ngSubmit)="onSubmit()" #movieForm="ngForm">
-  <div class="mb-3">
-    <label class=" mb-2 text-lg font-mono text-gray-100" for="title">Title:</label>
-    <input class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-      type="text"
-      id="title"
-      required
-      [(ngModel)]="movie.title"
-      name="title"
-    />
-  </div>
+        <div class="mb-3">
+          <label class="mb-2 text-lg font-mono text-gray-100" for="description"
+            >Description:</label
+          >
+          <input
+            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
+            type="text"
+            id="description"
+            required
+            [(ngModel)]="movie.description"
+            name="description"
+          />
+        </div>
 
-  <div class="mb-3">
-    <label class="mb-2 text-lg font-mono text-gray-100" for="description">Description:</label>
-    <input class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-      type="text"
-      id="description"
-      required
-      [(ngModel)]="movie.description"
-      name="description"
-    />
-  </div>
+        <div class="mb-3">
+          <label class="mb-2 text-lg font-mono text-gray-100" for="duration"
+            >Duration:</label
+          >
+          <div class="flex flex-row">
+            <input
+              class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
+              type="number"
+              id="duration"
+              required
+              [(ngModel)]="movie.duration"
+              name="duration"
+            />
+            <h1 class="ml-1.5 font-mono text-lg text-gray-100">/min.</h1>
+          </div>
+        </div>
 
-  <div class="mb-3">
-    <label class="mb-2 text-lg font-mono text-gray-100" for="duration">Duration:</label>
-    <div class="flex flex-row">
-    <input class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-      type="number"
-      id="duration"
-      required
-      [(ngModel)]="movie.duration"
-      name="duration"
-    />
-    <h1 class=" ml-1.5 font-mono text-lg text-gray-100">/min.</h1>
-  </div>
-  </div>
+        <div class="mb-3">
+          <label class="mb-2 text-lg font-mono text-gray-100" for="genre"
+            >Genre:</label
+          >
+          <input
+            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
+            type="text"
+            id="genre"
+            required
+            [(ngModel)]="movie.genre"
+            name="genre"
+          />
+        </div>
 
-  <div class="mb-3">
-    <label class="mb-2 text-lg font-mono text-gray-100" for="genre">Genre:</label>
-    <input  class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-      type="text"
-      id="genre"
-      required
-      [(ngModel)]="movie.genre"
-      name="genre"
-    />
-  </div>
-
-  <div class="mb-3">
-    <label class="mb-2 text-lg font-mono text-gray-100" for="releaseDate">Release Date:</label>
-    <input class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-      type="date"
-      id="releaseDate"
-      required
-      [(ngModel)]="movie.releaseDate"
-      name="releaseDate"
-    />
-  </div>
-<div class="mb-2 mt-2 flex justify-center">
-  <button class="font-mono ring ring-gray-100 dark:bg-red-800 dark:hover:bg-red-900 text-white w-full md:w-1/2  bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 mt-5 text-center transition-colors"
-          type="submit" [disabled]="!movieForm.valid">Add Movie</button>
-</div>
-</form>
-
-</div>
-
-
+        <div class="mb-3">
+          <label class="mb-2 text-lg font-mono text-gray-100" for="releaseDate"
+            >Release Date:</label
+          >
+          <input
+            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
+            type="date"
+            id="releaseDate"
+            required
+            [(ngModel)]="movie.releaseDate"
+            name="releaseDate"
+          />
+        </div>
+        <div class="mb-2 mt-2 flex justify-center">
+          <button
+            class="font-mono ring ring-gray-100 dark:bg-red-800 dark:hover:bg-red-900 text-white w-full md:w-1/2 bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-md px-5 py-2.5 mt-5 text-center transition-colors"
+            type="submit"
+          >
+            Add Movie
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

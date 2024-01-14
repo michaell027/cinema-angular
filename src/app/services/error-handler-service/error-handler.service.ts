@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
+interface ErrorMessage {
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,6 +27,15 @@ export class ErrorHandlerService {
       this.errorOccurred.next(errorMessage);
     }
 
+    this.errorTimeout = setTimeout(() => {
+      this.errorOccurred.next('');
+    }, 5000);
+  }
+
+  handleErrorMessage(error: ErrorMessage): void {
+    console.error(error);
+    clearTimeout(this.errorTimeout);
+    this.errorOccurred.next(error.message);
     this.errorTimeout = setTimeout(() => {
       this.errorOccurred.next('');
     }, 5000);

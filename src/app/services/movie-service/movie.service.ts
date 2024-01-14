@@ -44,4 +44,21 @@ export class MovieService {
       }),
     );
   }
+
+  addMovie(movie: Movie, token: string): Observable<Movie> {
+    console.log(movie);
+    console.log(token);
+    return this.http
+      .post<Movie>(this.movieUrl + 'add', movie, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return throwError(error);
+        }),
+      );
+  }
 }
