@@ -7,11 +7,11 @@
 <!-- Navigation Bar -->
 <div class="flex justify-center w-full p-3">
   <div
-    class="px-5 w-full flex justify-between bg-white shadow-lg rounded-2xl dark:bg-zinc-800 z-10 transition-colors"
+    class="px-5 w-full flex justify-between items-center bg-white shadow-lg rounded-2xl dark:bg-zinc-800 z-10 transition-colors"
   >
     <a
       href="https://www.youtube.com/watch?v=pihE-4HWZx0"
-      class="flex items-center"
+      class="flex items-center space-x-2 hover:bg-gray-400/30 rounded-lg p-2 transition-colors duration-200 h-fit"
     >
       <img
         ngSrc="{{ 'assets/cinema.png' }}"
@@ -85,7 +85,6 @@
           routerLink="/movie/add"
           routerLinkActive="active"
           class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
-
         >
           <span class="flex flex-col items-center">
             <!-- Icon -->
@@ -104,7 +103,6 @@
             ></span>
           </span>
         </a>
-
       </div>
       }
     </div>
@@ -136,21 +134,25 @@
         }
       </button>
       @if (isLogged) {
-  <button class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
-     (click) = "handleLogout()"
-  >
-    {{ username }}
-
-  </button>
+      <a
+        class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
+        routerLink="/profile"
+      >
+        {{ username }}
+      </a>
+      <button
+        (click)="logout()"
+        class="text-gray-800 dark:text-white bg-red-500 hover:text-red-100 dark:hover:text-red-200 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
+      >
+        Log out
+      </button>
       } @else {
-        <a
-
-          href="login"
-          class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
+      <a
+        routerLink="/login"
+        class="text-gray-800 dark:text-white hover:text-red-500 dark:hover:text-red-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none transition-colors duration-200"
         >Log in</a
-        >
+      >
       }
-
     </div>
   </div>
 </div>

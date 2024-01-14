@@ -4,7 +4,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroMoon, heroSun } from '@ng-icons/heroicons/outline';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme-service/theme.service';
-import {AuthService} from "../../services/auth-service/auth.service";
+import { AuthService } from '../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-bottom-navigation',
@@ -24,11 +24,12 @@ export class BottomNavigationComponent implements OnInit {
   theme = this.themeService.currentTheme;
   isAdmin = false;
   isLogged = false;
-  username ='';
+  username = '';
 
-  constructor(private themeService: ThemeService, private authService: AuthService) {
-
-  }
+  constructor(
+    private themeService: ThemeService,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit() {
     this.theme = this.themeService.currentTheme;
@@ -37,7 +38,7 @@ export class BottomNavigationComponent implements OnInit {
       this.isAdmin = true;
     }
 
-    this.authService.loggedUser().subscribe(user => {
+    this.authService.loggedUser().subscribe((user) => {
       if (user) {
         this.isLogged = true;
         this.username = user;
@@ -50,10 +51,11 @@ export class BottomNavigationComponent implements OnInit {
     this.theme = this.themeService.currentTheme;
   }
 
-  handleLogout() {
-    localStorage.removeItem('role');
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    window.location.href = '/login';
+  logout() {
+    this.authService.logout().subscribe((_) => {
+      this.isLogged = false;
+      this.isAdmin = false;
+      this.username = '';
+    });
   }
 }
