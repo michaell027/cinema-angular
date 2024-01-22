@@ -45,6 +45,15 @@ export class MovieService {
     );
   }
 
+  getMovieById(movieId: string): Observable<Movie> {
+    return this.http.get<Movie>(this.movieUrl + movieId).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        return throwError(error);
+      }),
+    );
+  }
+
   addMovie(movie: Movie, token: string): Observable<Movie> {
     console.log(movie);
     console.log(token);
@@ -60,5 +69,25 @@ export class MovieService {
           return throwError(error);
         }),
       );
+  }
+
+  updateMovie(movie: Movie, movieId: number): Observable<Movie> {
+    return this.http
+      .put<Movie>(this.movieUrl + 'update/' + movieId, movie)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return throwError(error);
+        }),
+      );
+  }
+
+  deleteMovie(movieId: number): Observable<Movie> {
+    return this.http.delete<Movie>(this.movieUrl + 'delete/' + movieId).pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.errorHandler.handleError(error);
+        return throwError(error);
+      }),
+    );
   }
 }

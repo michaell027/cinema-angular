@@ -1,29 +1,47 @@
-
-<div class="p-0 mt-20 flex items-center justify-center">
-  <div class="p-8 rounded-2xl shadow-md w-full mx-20 border-y-2 border-red-600 dark:border-2 dark:border-red-800 dark:bg-zinc-800 dark:text-gray-300 transition-colors">
-  <table class="w-full">
-    <thead>
-    <tr class="text-red-700 uppercase">
-      <th>id</th>
-      <th>title</th>
-      <th>description</th>
-      <th>duration</th>
-      <th>rating</th>
-      <th>genre</th>
-      <th>release date</th>
-    </tr>
-    </thead>
-    @for (movie of movies; track movie.id) {
-    <tr class="border-y-2 dark:border-gray-300/20 text-zinc-800 dark:text-gray-300 transition-colors text-center">
-      <td>{{ movie.id }}</td>
-      <td>{{ movie.title }}</td>
-      <td>{{ movie.description }}</td>
-      <td>{{ movie.duration }}</td>
-      <td>{{ movie.rating }}</td>
-      <td>{{ movie.genre }}</td>
-      <td>{{ movie.releaseDate }}</td>
-    </tr>
-    }
-  </table>
-</div>
+<div class="p-0 mt-10 flex items-center justify-center">
+  <div
+    class="p-8 rounded-2xl shadow-md w-full mx-10 border-y-2 border-red-600 dark:border-2 dark:border-red-800 dark:bg-zinc-800 dark:text-gray-300 transition-colors"
+  >
+    <table class="w-full">
+      <thead>
+        <tr class="text-red-700 uppercase">
+          <th>id</th>
+          <th>title</th>
+          <th>duration</th>
+          <th>rating</th>
+          <th>genre</th>
+          <th>release date</th>
+        </tr>
+      </thead>
+      @for (movie of movies; track movie.id) {
+      <tr
+        class="border-y-2 dark:border-gray-300/20 text-zinc-800 dark:text-gray-300 transition-colors text-center hover:bg-red-700/10"
+      >
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.duration }}</td>
+        <td>{{ movie.rating }}</td>
+        <td>{{ movie.genre }}</td>
+        <td>{{ movie.releaseDate }}</td>
+        <td>
+          <a routerLink="/admin/info/{{ movie.id }}">
+            <i
+              class="active-icon mdi mdi-information-outline mdi-24px mx-1 text-gray-300 hover:text-gray-500 cursor-pointer"
+            ></i>
+          </a>
+        </td>
+        <td class="flex justify-center items-center h-full">
+          <a routerLink="/admin/edit/{{ movie.id }}">
+            <i
+              class="active-icon mdi mdi-note-edit-outline mdi-24px mx-1 text-gray-400 hover:text-gray-600 cursor-pointer"
+            ></i>
+          </a>
+          <i
+            class="active-icon mdi mdi-delete-forever-outline mdi-24px mx-1 text-red-500 hover:text-red-700 cursor-pointer"
+          ></i>
+        </td>
+      </tr>
+      }
+    </table>
   </div>
+</div>

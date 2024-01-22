@@ -1,0 +1,10 @@
+@if (movie){
+<form (submit)="editMovie()">
+  <input [(ngModel)]="movie.title" name="title" />
+  <input [(ngModel)]="movie.releaseDate" type="date" name="releaseDate" />
+  <input [(ngModel)]="movie.description" name="description" />
+  <input [(ngModel)]="movie.genre" name="genre" />
+  <input [(ngModel)]="movie.duration" type="number" name="duration" />
+  <button type="submit">Submit</button>
+</form>
+}
