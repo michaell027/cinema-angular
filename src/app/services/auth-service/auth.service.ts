@@ -4,6 +4,7 @@ import { User } from '../../models/user.model';
 import { BehaviorSubject, map, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorHandlerService } from '../error-handler-service/error-handler.service';
+import { of } from 'rxjs';
 
 export interface ResponseProps {
   role: string;
@@ -16,6 +17,7 @@ export interface ResponseProps {
 })
 export class AuthService {
   userUrl: string = 'http://localhost:8080/api/users/';
+  private loggedUserSubject = new BehaviorSubject(this.username);
 
   constructor(
     private http: HttpClient,
@@ -49,7 +51,6 @@ export class AuthService {
     }
   }
 
-  private loggedUserSubject = new BehaviorSubject(this.username);
   private get username(): string {
     return localStorage.getItem('username') || '';
   }
@@ -94,7 +95,32 @@ export class AuthService {
       );
   }
 
-  isLoggedIn(): boolean {
-    return !!this.token;
+  isLoggedIn(): Observable<boolean> {
+    return this.http
+      .post<boolean>(
+        this.userUrl + 'check',
+        {},
+        {
+          headers: {
+            Authorization: `${this.token}`,
+          },
+        },
+      )
+      .pipe(
+        map((response) => {
+          return true;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return of(false);
+        }),
+      );
+  }
+
+  disableLogin(): void {
+    localStorage.removeItem('role');
+    this.loggedUserSubject.next('');
+    this.username = '';
+    this.token = '';
   }
 }
