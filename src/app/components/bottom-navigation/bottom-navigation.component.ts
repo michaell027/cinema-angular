@@ -35,7 +35,7 @@ export class BottomNavigationComponent implements OnInit {
   ngOnInit() {
     this.theme = this.themeService.currentTheme;
 
-    if (localStorage.getItem('role') === 'admin') {
+    if (localStorage.getItem('role') === 'ADMIN') {
       this.isAdmin = true;
     }
 

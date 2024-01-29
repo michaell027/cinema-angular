@@ -1,10 +1,45 @@
-@if (movie){
-<form (submit)="editMovie()">
-  <input [(ngModel)]="movie.title" name="title" />
-  <input [(ngModel)]="movie.releaseDate" type="date" name="releaseDate" />
-  <input [(ngModel)]="movie.description" name="description" />
-  <input [(ngModel)]="movie.genre" name="genre" />
-  <input [(ngModel)]="movie.duration" type="number" name="duration" />
-  <button type="submit">Submit</button>
-</form>
-}
+<div class="p-0 mt-10 flex items-center justify-center">
+  <div class="p-8 rounded-2xl shadow-md w-full mx-10 border-y-2 border-red-600 dark:border-2 dark:border-red-800 dark:bg-zinc-800 dark:text-gray-300 transition-colors">
+    <form (submit)="editMovie()" class="w-full">
+      @if (movie){
+      <div class="grid grid-cols-2 gap-4">
+        <div class="mb-4">
+          <label for="title" class="block text-red-700 uppercase">Title</label>
+          <input [(ngModel)]="movie.title" name="title" id="title"
+                 class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2" />
+        </div>
+
+        <div class="mb-4">
+          <label for="releaseDate" class="block text-red-700 uppercase">Release Date</label>
+          <input [(ngModel)]="movie.releaseDate" type="date" name="releaseDate" id="releaseDate"
+                 class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2" />
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="block text-red-700 uppercase">Description</label>
+          <textarea [(ngModel)]="movie.description" name="description" id="description"
+                    class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2"></textarea>
+        </div>
+
+
+        <div class="mb-4">
+          <label for="genre" class="block text-red-700 uppercase">Genre</label>
+          <input [(ngModel)]="movie.genre" name="genre" id="genre"
+                 class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2" />
+        </div>
+
+        <div class="mb-4">
+          <label for="duration" class="block text-red-700 uppercase">Duration</label>
+          <input [(ngModel)]="movie.duration" type="number" name="duration" id="duration"
+                 class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2" />
+        </div>
+      </div>
+      <div>
+        <button type="submit"
+                class="mt-4 bg-red-700 text-white px-4 py-2 rounded-full">Submit</button>
+      </div>
+      }
+    </form>
+  </div>
+</div>
+
