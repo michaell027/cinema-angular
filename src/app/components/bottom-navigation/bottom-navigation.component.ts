@@ -35,14 +35,13 @@ export class BottomNavigationComponent implements OnInit {
   ngOnInit() {
     this.theme = this.themeService.currentTheme;
 
-    if (localStorage.getItem('role') === 'ADMIN') {
-      this.isAdmin = true;
-    }
-
     this.authService.loggedUser().subscribe((user) => {
       if (user) {
         this.isLogged = true;
         this.username = user;
+        this.authService.isAdmin().subscribe((isAdmin) => {
+          this.isAdmin = isAdmin;
+        });
       } else {
         this.isLogged = false;
         this.username = '';
@@ -56,6 +55,17 @@ export class BottomNavigationComponent implements OnInit {
   }
 
   logout() {
+    this.authService.isLoggedIn().subscribe((isLoggedIn) => {
+      if (isLoggedIn) {
+        this.logoutUser();
+      } else {
+        this.authService.disableLogin();
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  logoutUser() {
     this.authService.logout().subscribe((_) => {
       this.isLogged = false;
       this.isAdmin = false;
