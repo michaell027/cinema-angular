@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../../models/user.model';
-import { BehaviorSubject, map, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, EMPTY, map, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ErrorHandlerService } from '../error-handler-service/error-handler.service';
 import { of } from 'rxjs';
@@ -30,6 +30,13 @@ export class AuthService {
         localStorage.setItem('role', response.role);
         this.token = response.token;
         this.username = response.username;
+        this.isAdmin().subscribe((isAdmin) => {
+          if (isAdmin) {
+            console.log('admin');
+          } else {
+            console.log('not admin');
+          }
+        });
 
         return true;
       }),
@@ -39,6 +46,27 @@ export class AuthService {
       }),
     );
   }
+
+  private get role(): Promise<string> {
+    return new Promise((resolve) => {
+      this.isAdmin().subscribe((isAdmin) => {
+        if (isAdmin) {
+          resolve('ADMIN');
+        } else {
+          resolve('USER');
+        }
+      });
+    });
+  }
+
+  private set role(value: string) {
+    if (value) {
+      localStorage.setItem('role', value);
+    } else {
+      localStorage.removeItem('role');
+    }
+  }
+
   private get token(): string {
     return localStorage.getItem('token') || '';
   }
@@ -108,7 +136,26 @@ export class AuthService {
       )
       .pipe(
         map((response) => {
+          console.log(response);
           return true;
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return of(false);
+        }),
+      );
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.http
+      .get<string>(this.userUrl + 'get-role', {
+        headers: {
+          Authorization: `${this.token}`,
+        },
+      })
+      .pipe(
+        map((response) => {
+          return response === 'ADMIN';
         }),
         catchError((error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);

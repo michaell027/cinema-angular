@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth-service/auth.service';
-import { MovieService } from '../../services/movie-service/movie.service';
-import { ErrorHandlerService } from '../../services/error-handler-service/error-handler.service';
+import { AuthService } from '../../../services/auth-service/auth.service';
+import { MovieService } from '../../../services/movie-service/movie.service';
+import { ErrorHandlerService } from '../../../services/error-handler-service/error-handler.service';
 
 @Component({
   selector: 'app-add-movie-page',
