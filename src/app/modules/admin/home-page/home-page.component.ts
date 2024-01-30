@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MovieService } from '../../../services/movie-service/movie.service';
 import { Movie } from '../../../models/movie.model';
 import { RouterLink } from '@angular/router';
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-home-page',
@@ -20,5 +21,11 @@ export class HomePageComponent implements OnInit {
     this.movieService.getMovies().subscribe((movies: Movie[]) => {
       this.movies = movies;
     });
+  }
+
+  deleteMovie(id: number) {
+    this.movieService.deleteMovie(id).subscribe(() => {
+      this.movies = this.movies.filter(movie => movie.id != id);
+    })
   }
 }

@@ -56,28 +56,66 @@
           >
           <input
             [(ngModel)]="movie.duration"
+            min="1"
+            max="5"
             type="number"
             name="duration"
             id="duration"
             class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2"
           />
         </div>
+        <div class="mb-4">
+          <label for="duration" class="block text-red-700 uppercase"
+          >Rating</label
+          >
+        <input
+          [(ngModel)]="movie.rating"
+          max="5"
+          type="number"
+          name="rating"
+          id="rating"
+          class="w-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-gray-300 transition-colors border-2 dark:border-zinc-700 rounded-2xl p-2"
+        />
       </div>
-      <div>
-        <button
-          type="submit"
-          class="mt-4 bg-red-700 text-white px-4 py-2 rounded-full"
-        >
-          Submit
-        </button>
+
       </div>
+        <div class="mb-5">
+          <button
+            type="submit"
+            class="mt-4 bg-red-700 text-white px-4 py-2 rounded-full"
+          >
+            Submit
+          </button>
+        </div>
       }
+
+        <div class="flex justify-between flex-col mb-4 border-2 rounded-2xl p-5 border-red-500/80 dark:border-red-800/80" *ngFor="let session of movie?.movieSessions">
+          <div class="flex flex-col">
+
+
+            <div>
+              <label class="block text-red-700 uppercase">Start time</label>
+              <p>{{dateAndTimeToString(session.startTime)}}</p>
+              <label class="block text-red-700 uppercase">End time</label>
+              <p>{{dateAndTimeToString(session.endTime)}}
+              <label class="block text-red-700 uppercase">Price</label>
+              <p>{{ session.price }} €</p>
+            </div>
+
+
+            <div class="flex justify-end gap-1.5">
+
+              <span class=" text-red-500 mdi mdi-delete-circle mdi-24px"></span>
+            </div>
+          </div>
+        </div>
+<div (click)="addSessionTime()">
+      <span class=" text-red-500 mdi mdi-plus-circle mdi-36px"></span>
+</div>
+
     </form>
   </div>
 </div>
 
-<div *ngFor="let session of movie?.movieSessions">
-  <p>{{ session.startTime }}</p>
-  <p>{{ session.endTime }}</p>
-  <p>{{ session.price }} €</p>
-</div>
+<app-modal-window *ngIf="isModalWindowOpen" [title]="movie!.title" [id]="movie!.id!" (closeModalEvent)="closeModalWindow($event)" />
+

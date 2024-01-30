@@ -1,6 +1,59 @@
-<p>{{ movie?.title }}</p>
-<p>{{ movie?.description }}</p>
-<p>{{ movie?.genre }}</p>
-<p>{{ movie?.duration }}</p>
-<p>{{ movie?.rating }}</p>
-<p>{{ movie?.releaseDate }}</p>
+<div class="p-0 mt-10 flex items-center justify-center">
+  <div
+    class="p-8 rounded-2xl shadow-md w-full mx-10 border-y-2 border-red-600 dark:border-2 dark:border-red-800 dark:bg-zinc-800 dark:text-gray-300 transition-colors"
+  >
+    <form class="w-full">
+      @if (movie){
+        <div class="grid grid-cols-2 gap-4">
+          <div class="mb-4">
+            <label class="block text-red-700 uppercase">Title</label>
+            <p>{{ movie?.title }}</p>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-red-700 uppercase"
+            >Release Date</label
+            >
+            <p>{{ movie?.releaseDate }}</p>
+          </div>
+
+          <div class="mb-4">
+            <label  class="block text-red-700 uppercase"
+            >Description</label
+            >
+            <p>{{ movie?.description }}</p>
+          </div>
+
+          <div class="mb-4">
+            <label  class="block text-red-700 uppercase">Genre</label>
+            <p>{{ movie?.genre }}</p>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-red-700 uppercase"
+            >Duration ( min. )</label
+            >
+            <p>{{ movie?.duration }}</p>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-red-700 uppercase">Rating</label>
+            <p>{{ movie?.rating }}</p>
+          </div>
+
+          <div class="mb-4 border-2 rounded-2xl p-5 border-red-500/80 dark:border-red-800/80" *ngFor="let session of movie?.movieSessions">
+            <label class="block text-red-700 uppercase">Start time</label>
+            <p>{{ session.startTime }}</p>
+            <label class="block text-red-700 uppercase">End time</label>
+            <p>{{ session.endTime }}</p>
+            <label class="block text-red-700 uppercase">Price</label>
+            <p>{{ session.price }} €</p>
+          </div>
+
+        </div>
+      }
+    </form>
+  </div>
+</div>
+
+

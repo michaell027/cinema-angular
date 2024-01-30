@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { MovieService } from '../../../services/movie-service/movie.service';
 import { ErrorHandlerService } from '../../../services/error-handler-service/error-handler.service';
+import {ModalWindowComponent} from "../../../components/modal-window/modal-window.component";
 
 @Component({
   selector: 'app-add-movie-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ModalWindowComponent],
   templateUrl: './add-movie-page.component.html',
   styleUrl: './add-movie-page.component.css',
 })
@@ -20,6 +21,7 @@ export class AddMoviePageComponent {
     description: '',
     duration: 0,
     genre: '',
+    rating: 0,
     releaseDate: '',
   };
 
