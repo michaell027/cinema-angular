@@ -1,3 +1,5 @@
+import { SessionTime } from './session-time.model';
+
 export interface Movie {
   id?: number;
   title: string;
@@ -6,4 +8,5 @@ export interface Movie {
   rating?: number;
   genre: string;
   releaseDate: string;
+  movieSessions?: SessionTime[];
 }

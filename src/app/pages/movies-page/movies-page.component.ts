@@ -85,6 +85,7 @@ export class MoviesPageComponent implements OnInit {
   getMoviesByDay(date: string): MovieWithSessionsModel[] {
     this.movieService.getMoviesByDay(date).subscribe((movies) => {
       this.movies = movies;
+      console.log(movies);
     });
     return this.movies;
   }

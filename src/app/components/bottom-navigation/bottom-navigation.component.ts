@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroMoon, heroSun } from '@ng-icons/heroicons/outline';
@@ -60,7 +60,7 @@ export class BottomNavigationComponent implements OnInit {
         this.logoutUser();
       } else {
         this.authService.disableLogin();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']).then();
       }
     });
   }
@@ -70,7 +70,7 @@ export class BottomNavigationComponent implements OnInit {
       this.isLogged = false;
       this.isAdmin = false;
       this.authService.disableLogin();
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']).then();
     });
   }
 }

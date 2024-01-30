@@ -5,6 +5,7 @@ import { MoviesPageComponent } from './pages/movies-page/movies-page.component';
 import { NgModule } from '@angular/core';
 import { ErrorComponent } from './components/error-component/error-component.component';
 import { authGuard } from './guards/auth-guard/auth.guard';
+import { adminGuard } from './guards/admin-guard/admin.guard';
 export const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [adminGuard],
   },
   { path: '**', component: ErrorComponent },
 ];
