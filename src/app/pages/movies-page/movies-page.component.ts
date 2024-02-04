@@ -31,6 +31,7 @@ export class MoviesPageComponent implements OnInit {
   day: string = '';
   movies: MovieWithSessionsModel[] = [];
   date: string = '';
+  minDate: string = new Date().toISOString().split('T')[0];
 
   constructor(
     private router: Router,

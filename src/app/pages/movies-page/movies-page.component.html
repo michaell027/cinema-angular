@@ -2,6 +2,7 @@
   <input
     class="dark:text-gray-300 p-1 mb-10 border-2 font-mono dark:border-red-800 dark:bg-red-900 rounded-2xl dark:ring dark:ring-red-500/20"
     type="date"
+    [min]="minDate"
     [(ngModel)]="date"
     (change)="handleChangeDate()"
   />

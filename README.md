@@ -38,6 +38,15 @@ npm install
 ng serve
 ```
 
+## Step 5: Explore the Application
+- You can log in as an admin using the following credentials:
+  - Email: admin@admin.com
+  - Password: admin
+
+  - You can log in as a user using the following credentials:
+  - Email: michaela@gmail.com
+  - Password: michaela
+
 Your Cinema App is now ready to use! Open your browser and visit http://localhost:4200 to explore the application.
 
 Enjoy the movie experience! 🎬
