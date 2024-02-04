@@ -35,8 +35,13 @@ export class MovieService {
   }
 
   getTodayMovies(): Observable<MovieWithSessionsModel[]> {
+    const token = this.authService.getToken();
     return this.http
-      .get<MovieWithSessionsModel[]>(this.sessionUrl + 'today')
+      .get<MovieWithSessionsModel[]>(this.sessionUrl + 'today', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
