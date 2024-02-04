@@ -4,12 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler-service/error-handler.service';
 import { MovieService } from '../../../services/movie-service/movie.service';
 import { Movie } from '../../../models/movie.model';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from '../../../components/rating/rating.component';
 
 @Component({
   selector: 'app-movie-info-page',
   standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RatingComponent],
   templateUrl: './movie-info-page.component.html',
   styleUrl: './movie-info-page.component.css',
 })

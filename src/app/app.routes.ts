@@ -11,7 +11,11 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'movies', component: MoviesPageComponent, canActivate: [authGuard] },
-  { path: 'movies/:date', component: MoviesPageComponent },
+  {
+    path: 'movies/:date',
+    component: MoviesPageComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'admin',
     loadChildren: () =>

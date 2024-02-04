@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { MovieService } from '../../../services/movie-service/movie.service';
 import { ErrorHandlerService } from '../../../services/error-handler-service/error-handler.service';
-import {ModalWindowComponent} from "../../../components/modal-window/modal-window.component";
+import { ModalWindowComponent } from '../../../components/modal-window/modal-window.component';
 
 @Component({
   selector: 'app-add-movie-page',
@@ -24,6 +24,8 @@ export class AddMoviePageComponent {
     rating: 0,
     releaseDate: '',
   };
+
+  today = new Date().toISOString().split('T')[0];
 
   constructor(
     private http: HttpClient,
@@ -63,7 +65,7 @@ export class AddMoviePageComponent {
     const token = localStorage.getItem('token') || '';
     this.movieService.addMovie(this.movie, token).subscribe(
       (_) => {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/all']);
       },
       (error) => {
         console.log(error);

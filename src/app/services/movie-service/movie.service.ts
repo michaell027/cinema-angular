@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, pipe, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MovieWithSessionsModel } from '../../models/movie-with-sessions.model';
 import { Movie } from '../../models/movie.model';
 import { ErrorHandlerService } from '../error-handler-service/error-handler.service';
+import { AuthService } from '../auth-service/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
@@ -14,15 +15,23 @@ export class MovieService {
   constructor(
     private http: HttpClient,
     private errorHandler: ErrorHandlerService,
+    private authService: AuthService,
   ) {}
 
   getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.movieUrl + 'all').pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        return throwError(error);
-      }),
-    );
+    const token = this.authService.getToken();
+    return this.http
+      .get<Movie[]>(this.movieUrl + 'all', {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return throwError(error);
+        }),
+      );
   }
 
   getTodayMovies(): Observable<MovieWithSessionsModel[]> {
@@ -37,12 +46,19 @@ export class MovieService {
   }
 
   getMoviesByDay(day: string): Observable<MovieWithSessionsModel[]> {
-    return this.http.get<MovieWithSessionsModel[]>(this.sessionUrl + day).pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        return throwError(error);
-      }),
-    );
+    const token = this.authService.getToken();
+    return this.http
+      .get<MovieWithSessionsModel[]>(this.sessionUrl + day, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return throwError(error);
+        }),
+      );
   }
 
   getMovieById(movieId: string): Observable<Movie> {
@@ -55,8 +71,6 @@ export class MovieService {
   }
 
   addMovie(movie: Movie, token: string): Observable<Movie> {
-    console.log(movie);
-    console.log(token);
     return this.http
       .post<Movie>(this.movieUrl + 'add', movie, {
         headers: {
@@ -72,8 +86,13 @@ export class MovieService {
   }
 
   updateMovie(movie: Movie, movieId: number): Observable<Movie> {
+    const token = this.authService.getToken();
     return this.http
-      .put<Movie>(this.movieUrl + 'update/' + movieId, movie)
+      .put<Movie>(this.movieUrl + 'update/' + movieId, movie, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.errorHandler.handleError(error);
@@ -83,11 +102,18 @@ export class MovieService {
   }
 
   deleteMovie(movieId: number): Observable<Movie> {
-    return this.http.delete<Movie>(this.movieUrl + 'delete/' + movieId).pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.errorHandler.handleError(error);
-        return throwError(error);
-      }),
-    );
+    const token = this.authService.getToken();
+    return this.http
+      .delete<Movie>(this.movieUrl + 'delete/' + movieId, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          this.errorHandler.handleError(error);
+          return throwError(error);
+        }),
+      );
   }
 }

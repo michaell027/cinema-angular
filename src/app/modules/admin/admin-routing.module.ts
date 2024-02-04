@@ -8,7 +8,9 @@ import { AddMoviePageComponent } from './add-movie-page/add-movie-page.component
 const routes: Routes = [
   {
     path: '',
-    children: [{ path: '', component: HomePageComponent, pathMatch: 'full' }],
+    children: [
+      { path: 'all', component: HomePageComponent, pathMatch: 'full' },
+    ],
   },
   { path: 'info/:movieId', component: MovieInfoPageComponent },
   { path: 'edit/:movieId', component: EditMoviePageComponent },

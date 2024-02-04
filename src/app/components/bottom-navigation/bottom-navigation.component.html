@@ -104,15 +104,13 @@
           </span>
         </a>
       </div>
-      }
-
-      @if (isAdmin) {
-        <div class="flex group">
-          <a
-            routerLink="/admin"
-            routerLinkActive="active"
-            class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
-          >
+      } @if (isAdmin) {
+      <div class="flex group">
+        <a
+          routerLink="/admin/all"
+          routerLinkActive="active"
+          class="p-3 text-gray-400 hover:text-red-500 dark:hover:text-red-500"
+        >
           <span class="flex flex-col items-center">
             <!-- Icon -->
             <i
@@ -129,8 +127,8 @@
               class="active-indicator h-2 w-2 rounded-full group-hover:bg-red-500 dark:group-hover:bg-red-500 transition-all transition-color duration-150 delay-100"
             ></span>
           </span>
-          </a>
-        </div>
+        </a>
+      </div>
       }
     </div>
 

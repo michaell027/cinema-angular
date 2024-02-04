@@ -46,3 +46,12 @@
     </table>
   </div>
 </div>
+
+<app-delete-modal-window
+  *ngIf="showModal"
+  [movie]="selectedMovie!"
+  [showModal]="showModal"
+  [isSessionTimeDelete]="false"
+  (closeModal)="closeModal()"
+  (deleteMovie)="deleteMovieConfirmed($event)"
+></app-delete-modal-window>

@@ -1,4 +1,9 @@
-<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
   <!--
     Background backdrop, show/hide based on modal state.
 
@@ -10,39 +15,84 @@
       To: "opacity-0"
   -->
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-      <div class="relative transform overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+    <div
+      class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+    >
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+      >
         <div class="bg-zinc-100 dark:bg-zinc-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-          <div class="sm:flex sm:items-start">
-            <div class="mx-auto flex h-12 w-12 items-center justify-center">
-              <span class="mdi mdi-timer-edit mdi-24px"></span>
+          <div class="sm:flex h-full items-center">
+            <div class="mx-auto w-1/2 h-full flex items-center justify-center">
+              <img
+                ngSrc="assets/cinema.png"
+                height="512"
+                width="512"
+                alt="cinema_logo"
+              />
             </div>
             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <h3 class="text-base font-semibold leading-6 text-zinc-900 dark:text-zinc-200" id="modal-title">Add session time for: {{title}}</h3>
+              <h3
+                class="text-base font-semibold leading-6 text-zinc-900 dark:text-zinc-200"
+                id="modal-title"
+              >
+                Add session time for: {{ title }}
+              </h3>
               <div class="mt-2">
                 <label class="md-4 dark:text-zinc-300">Start time :</label>
-                <input [(ngModel)]="newSessionTime.startTime" name="startTime" type="datetime-local" class="w-full border-2 border-zinc-800 dark:border-zinc-300 rounded-md shadow-sm" >
+                <input
+                  [(ngModel)]="startTimeString"
+                  name="startTime"
+                  type="datetime-local"
+                  min="{{ minDate }}"
+                  class="w-full border-2 border-zinc-800 dark:border-zinc-300 rounded-md shadow-sm px-2 py-1"
+                  (ngModelChange)="updateEndTime()"
+                />
+                <p class="text-sm dark:text-zinc-300">
+                  Duration: {{ duration }} min
+                </p>
               </div>
               <div class="mt-2">
                 <label class="md-4 dark:text-zinc-300">End time :</label>
-                <input [(ngModel)]="newSessionTime.endTime" name="endTime" type="datetime-local" class="w-full border-2 border-zinc-800 dark:border-zinc-300 rounded-md shadow-sm" >
+                <input
+                  [(ngModel)]="endTimeString"
+                  [disabled]="true"
+                  name="endTime"
+                  type="datetime-local"
+                  class="w-full border-2 border-zinc-800 dark:border-zinc-300 rounded-md shadow-sm px-2 py-1 bg-gray-100 dark:bg-zinc-400"
+                />
               </div>
               <div class="mt-2">
                 <label class="md-4 dark:text-zinc-300">Price :</label>
-                <input [(ngModel)]="newSessionTime.price" name="price" type="number" min="0" class="w-full bg-red-500/80 rounded-md shadow-sm">
+                <input
+                  [(ngModel)]="newSessionTime.price"
+                  name="price"
+                  type="number"
+                  min="0"
+                  class="w-full rounded-md shadow-sm border-2 border-zinc-800 dark:border-zinc-300 px-2 py-1"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+        <div
+          class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 dark:bg-zinc-800"
+        >
           <button
             (click)="addMovieSession()"
-            type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Add session</button>
+            type="button"
+            class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+          >
+            Add session
+          </button>
           <button
             (click)="closeModalWindow()"
-            type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+            type="button"
+            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

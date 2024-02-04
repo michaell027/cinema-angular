@@ -1,0 +1,14 @@
+<div class="flex gap-1 items-center">
+  <div *ngFor="let _ of getArray(fullStars)">
+    <span class="text-red-500 mdi mdi-star mdi-24px"></span>
+  </div>
+
+  <span
+    *ngIf="halfStar"
+    class="text-red-500 mdi mdi-star-half-full mdi-24px"
+  ></span>
+  <div *ngFor="let _ of getArray(emptyStars)">
+    <span class="text-red-500 mdi mdi-star-outline mdi-24px"></span>
+  </div>
+  <p class="text-red-500 ml-4 font-bold">{{ rating }}</p>
+</div>

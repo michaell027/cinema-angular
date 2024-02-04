@@ -75,21 +75,21 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label class="mb-2 text-lg font-mono text-gray-100" for="genre"
-          >Rating:</label
-          >
-          <input
-            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"
-            type="text"
-            id="rating"
-            min="0"
-            max="5"
-            required
-            [(ngModel)]="movie.rating"
-            name="rating"
-          />
-        </div>
+        <!--        <div class="mb-3">-->
+        <!--          <label class="mb-2 text-lg font-mono text-gray-100" for="genre"-->
+        <!--          >Rating:</label-->
+        <!--          >-->
+        <!--          <input-->
+        <!--            class="block p-1 pl-3 rounded-2xl border-2xl border-gray-100/20 text-zinc-900 dark:text-zinc-800 bg-gray-300 dark:bg-zinc-100 w-full"-->
+        <!--            type="text"-->
+        <!--            id="rating"-->
+        <!--            min="0"-->
+        <!--            max="5"-->
+        <!--            required-->
+        <!--            [(ngModel)]="movie.rating"-->
+        <!--            name="rating"-->
+        <!--          />-->
+        <!--        </div>-->
 
         <div class="mb-3">
           <label class="mb-2 text-lg font-mono text-gray-100" for="releaseDate"
@@ -100,6 +100,7 @@
             type="date"
             id="releaseDate"
             required
+            [min]="today"
             [(ngModel)]="movie.releaseDate"
             name="releaseDate"
           />
