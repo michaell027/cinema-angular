@@ -1,27 +1,43 @@
-# Cinema
+# Cinema App - Setup Guide
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Thank you for choosing our Cinema App! Follow these simple steps to get started.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Make sure you have Node.js installed on your machine.
+- You'll need MySQL for the database. You can download it from [here](https://dev.mysql.com/downloads/installer/).
+- You'll also need the Angular CLI. You can install it by running `npm install -g @angular/cli` in your terminal.
 
-## Code scaffolding
+## Step 1: Download Backend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Visit the backend repository at https://github.com/michaell027/cinema_backend and download the backend code.
 
-## Build
+```bash
+git clone https://github.com/michaell027/cinema_backend.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Step 2: Initialize the Database
 
-## Running unit tests
+Navigate to the downloaded backend folder and locate the initialize_database.sql file. Execute this SQL script in your MySQL database to set up the necessary tables.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Step 3: Run the Backend
 
-## Running end-to-end tests
+Ensure your MySQL server is running. Then, start the backend server.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+npm start
+```
 
-## Further help
+## Step 4: Run the Angular Project
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Once the backend is up and running, open a new terminal window, navigate to the Angular project folder, and run the following commands.
+
+```bash
+npm install
+ng serve
+```
+
+Your Cinema App is now ready to use! Open your browser and visit http://localhost:4200 to explore the application.
+
+Enjoy the movie experience! 🎬
